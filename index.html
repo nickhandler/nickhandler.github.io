@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nicolas Handler — Fixed Income Research</title>
+<meta name="description" content="Independent fixed income research and market commentary." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">Nicolas Handler<small>Fixed Income Research</small></div>
+    <ul class="nav-links">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Independent Fixed Income Research</p>
+    <h1>Reading the curve, ahead of the tape.</h1>
+    <p class="lede">
+      Commentary and analysis on rates, credit, and the macro forces moving
+      fixed income markets — published as I write it.
+    </p>
+    <p class="byline"><strong>Nicolas Handler</strong> — Portfolio Manager</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="section-head">
+    <h2>Latest Publications</h2>
+    <span class="section-note">Updated as written</span>
+  </div>
+
+  <div class="pub-list" id="preview-list"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclaimer">Personal commentary and opinion. Not investment advice, and not a solicitation to buy or sell any security.</p>
+    <p>&copy; 2026 Nicolas Handler</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="render.js"></script>
+<script>
+  renderPreviewColumn("preview-list", 5);
+</script>
+</body>
+</html>

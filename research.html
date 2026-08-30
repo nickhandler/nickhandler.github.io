@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research — Nicolas Handler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <div class="brand">Nicolas Handler<small>Fixed Income Research</small></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" aria-current="page">Research</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Fixed Income Research Portfolio</h1>
+    <p>Market commentary, credit analysis, and macro research on rates, spreads, and the forces moving fixed income markets.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="article-list" id="research-list"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclaimer">Personal commentary and opinion. Not investment advice, and not a solicitation to buy or sell any security.</p>
+    <p>&copy; 2026 Nicolas Handler</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="render.js"></script>
+<script>renderArticleList("research-list");</script>
+</body>
+</html>
