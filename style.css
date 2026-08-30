@@ -1,0 +1,550 @@
+/* ============================================================
+   DESIGN TOKENS
+   Palette: deep ledger navy, cool paper, brass "gilt" accent
+   (a nod to UK government bonds — "gilts"), and a muted
+   burgundy reserved only for high-conviction flags.
+   ============================================================ */
+:root {
+  --ink:        #0E1F3C;   /* primary text, nav, headlines */
+  --ink-soft:   #33455F;   /* secondary text */
+  --steel:      #4C6480;   /* tertiary text, meta */
+  --paper:      #F2F4F3;   /* page background — cool, not cream */
+  --paper-raised: #FFFFFF; /* card / raised surface */
+  --line:       rgba(14, 31, 60, 0.14);   /* hairline rules */
+  --line-soft:  rgba(14, 31, 60, 0.07);
+  --gilt:       #A9803F;   /* brass accent — links, eyebrows */
+  --gilt-dim:   #C9AD7C;
+  --conviction: #7A2E2E;   /* reserved: high-conviction flag only */
+  --conviction-bg: #F3E7E4;
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+
+  --max-width: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gilt); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.site-nav {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.brand small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-radius: 2px;
+}
+
+.nav-links a:hover { color: var(--ink); text-decoration: none; background: var(--line-soft); }
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+}
+
+.nav-toggle { display: none; }
+
+/* ============================================================
+   HERO (home page)
+   ============================================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero .wrap {
+  padding: 88px 28px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gilt);
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  margin: 0 0 22px;
+  max-width: 15ch;
+  color: var(--ink);
+}
+
+.hero p.lede {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin: 0 0 8px;
+}
+
+.hero .byline {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--steel);
+}
+
+.hero .byline strong { color: var(--ink); font-weight: 600; }
+
+/* ambient yield-curve motif */
+.curve-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.curve-field svg { width: 100%; height: 100%; }
+
+.curve-path {
+  fill: none;
+  stroke: var(--gilt-dim);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw-curve 2.4s ease-out forwards;
+}
+
+.curve-path.secondary {
+  stroke: var(--line);
+  animation-delay: 0.2s;
+}
+
+.curve-dot {
+  fill: var(--gilt);
+  opacity: 0;
+  animation: dot-in 0.6s ease-out 2.1s forwards;
+}
+
+@keyframes draw-curve {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes dot-in {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curve-path { animation: none; stroke-dashoffset: 0; }
+  .curve-dot { animation: none; opacity: 1; }
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 56px 0 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.section-head .section-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* page header used on trends.html / trades.html */
+.page-head {
+  padding: 64px 0 36px;
+  border-bottom: 1px solid var(--line);
+}
+.page-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  margin: 0 0 12px;
+}
+.page-head p {
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ============================================================
+   PUBLICATION LIST (home preview)
+   ============================================================ */
+.pub-list {
+  max-width: 68ch;
+  padding-bottom: 40px;
+}
+
+.pub-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.pub-item:last-child { border-bottom: none; }
+
+.pub-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--steel);
+  letter-spacing: 0.03em;
+}
+
+.pub-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 6px 0 6px;
+  line-height: 1.35;
+}
+
+.pub-item h3 a { color: var(--ink); }
+.pub-item h3 a:hover { color: var(--gilt); text-decoration: none; }
+
+.pub-item .summary {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.empty-note {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--steel);
+  padding: 24px 0;
+}
+
+/* ============================================================
+   FULL ARTICLE LIST (trends.html / trades.html)
+   Uses native <details> — no JS required to expand.
+   ============================================================ */
+.article-list { padding: 8px 0 60px; }
+
+.article {
+  border-bottom: 1px solid var(--line);
+}
+.article:first-child { border-top: 1px solid var(--line); }
+
+.article summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 26px 0;
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.article summary::-webkit-details-marker { display: none; }
+
+.article summary:hover h3 { color: var(--gilt); }
+
+.article .meta-date {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--steel);
+  padding-top: 3px;
+}
+
+.article h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.article .summary {
+  color: var(--ink-soft);
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.article .expand-hint {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--gilt);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  align-self: start;
+  padding-top: 4px;
+}
+
+.article[open] summary .expand-hint::after { content: " \2212"; }
+.article:not([open]) summary .expand-hint::after { content: " \002B"; }
+
+.article-body {
+  padding: 0 0 34px;
+  max-width: 68ch;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+}
+.article-body p { margin: 0 0 14px; }
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  color: var(--steel);
+  margin-right: 8px;
+}
+
+.badge.high {
+  color: var(--conviction);
+  background: var(--conviction-bg);
+  border-color: transparent;
+}
+.badge.medium { color: var(--gilt); border-color: var(--gilt-dim); }
+.badge.low { color: var(--steel); }
+
+/* ============================================================
+   LONG-FORM ARTICLE CONTENT
+   Used for research pieces that need more structure than plain
+   paragraphs: section headers, a callout box, a data table, a
+   plain-English recap, and a pull quote. Scoped inside
+   .article-body so it only applies where used.
+   ============================================================ */
+.article-body h4 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 34px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.article-body h4:first-child { margin-top: 0; }
+
+.article-body .section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gilt);
+  margin: 34px 0 6px;
+}
+.article-body .section-label + h4 { margin-top: 4px; }
+
+.article-body .callout-box {
+  background: var(--paper-raised);
+  border-left: 3px solid var(--gilt);
+  padding: 18px 22px;
+  margin: 20px 0 26px;
+}
+.article-body .callout-box p { margin: 0 0 10px; }
+.article-body .callout-box p:last-child { margin-bottom: 0; }
+.article-body .callout-box p.lead {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.article-body blockquote.pull-quote {
+  margin: 24px 0;
+  padding: 2px 0 2px 20px;
+  border-left: 3px solid var(--ink);
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+
+.article-body table.odds-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 22px 0 28px;
+  font-size: 0.9rem;
+}
+.article-body table.odds-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--steel);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ink);
+}
+.article-body table.odds-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+.article-body table.odds-table td.pct {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--gilt);
+  white-space: nowrap;
+}
+
+.article-body .formula-block {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 12px 16px;
+  margin: 16px 0 22px;
+  overflow-x: auto;
+}
+
+.article-body .simple-version {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  margin: 18px 0 4px;
+}
+.article-body .simple-version .label {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--gilt);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.article-body .simple-version p { margin: 0 0 10px; }
+.article-body .simple-version p:last-child { margin-bottom: 0; }
+
+.article-body .bottom-line {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 36px 0 48px;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-footer p {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--steel);
+  margin: 0;
+}
+
+.disclaimer {
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 760px) {
+  .site-nav .wrap { height: auto; padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .nav-links { flex-wrap: wrap; gap: 4px; }
+  .nav-links a { padding: 6px 10px; }
+  .hero .wrap { padding: 56px 20px 44px; }
+  .article summary { grid-template-columns: 1fr; gap: 4px; }
+  .article .expand-hint { display: none; }
+  .wrap { padding: 0 20px; }
+}
