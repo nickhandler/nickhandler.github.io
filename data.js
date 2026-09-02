@@ -55,6 +55,72 @@ const POSTS = [
     `,
   },
   {
+    id: "2026-09-01-treasury-jgb-yields",
+    date: "2026-09-01",
+    title: "10-Year Treasury Hits 4.8% as Japanese Yields Break Multi-Decade Highs",
+    summary:
+      "The 10-year Treasury yield rose to its highest level since January 2025 as Japan's 5-year JGB hit an all-time high and its 10-year crossed 3% for the first time since 1996 — a coordinated move worth understanding, not just watching.",
+    body: `
+      <p>The 10-year U.S. Treasury yield rose to 4.8% today, its highest level
+      since January 2025. At the same time, Japan's 5-year government bond yield
+      reached an all-time high of roughly 2.26%, while its 10-year yield reached
+      3% for the first time since 1996.</p>
+
+      <p><strong>Why does this matter?</strong> It matters because borrowing costs
+      are rising in two of the world's largest government bond markets. Higher
+      yields increase debt financing costs for governments and corporations,
+      which can discourage investment and spending and weaken the labor market.
+      Government bond yields also serve as benchmarks for many consumer-related
+      loans, including mortgages, auto loans, and student loans. Japan is
+      especially important because Japanese investors are major buyers of foreign
+      bonds, including U.S. Treasuries. If Japanese bonds offer more attractive
+      yields at home, Japanese investors may have less incentive to invest
+      overseas, potentially placing even more upward pressure on U.S. yields. So,
+      this is not just some fancy Wall Street headline that doesn't really affect
+      the everyday average person. It absolutely does.</p>
+
+      <p><strong>What's driving the move?</strong> The rise in yields suggests
+      investors are demanding greater compensation to lend money to the U.S. and
+      Japanese governments. Today's immediate catalyst appears to be the renewed
+      rise in oil prices caused by the conflict in Iran, which is increasing
+      concerns that inflation could remain elevated and force central banks to
+      keep interest rates higher or raise them further. But more broadly,
+      elevated fiscal deficits, heavy government debt issuance, and uncertainty
+      over future demand for government bonds are also placing upward pressure on
+      yields. In Japan specifically, the weak yen, persistent inflation, and
+      expectations for additional Bank of Japan rate hikes are adding to the
+      move. Together, these risks are causing investors to demand higher yields
+      and a greater term premium for holding government debt.</p>
+
+      <p><strong>What does this mean for bond investors and portfolio
+      managers?</strong> For investors who already own long-duration bonds, the
+      rise in yields means the value of those bonds has fallen. The longer the
+      duration, the more sensitive the bond's price is to changes in interest
+      rates, meaning investors with greater exposure to the long end of the curve
+      have likely experienced larger losses. However, higher yields also create a
+      more attractive entry point for investors looking to add duration and lock
+      in higher income. For portfolio managers, the key question is whether
+      yields are close to peaking or whether inflation and fiscal concerns will
+      continue pushing them higher. They must also consider whether higher
+      Japanese yields will encourage Japanese investors to move money out of U.S.
+      Treasuries and back into Japanese bonds. If they believe yields have
+      further to rise, they may remain underweight duration. If they believe
+      economic weakness will eventually bring inflation and yields lower, this
+      could be an opportunity to begin adding duration at more attractive
+      levels.</p>
+
+      <p><strong>What should you watch next?</strong> The biggest things to watch
+      are oil prices, developments involving Iran, incoming labor and inflation
+      data, comments from Federal Reserve and Bank of Japan officials, the value
+      of the yen, and demand at upcoming government bond auctions. If oil
+      continues rising and inflation remains sticky, yields could move even
+      higher. If the economy or labor market weakens sharply, investors may
+      rotate back into government bonds, pushing yields lower. The key question
+      is whether inflation and fiscal risk or economic weakness becomes the
+      market's dominant concern.</p>
+    `,
+  },
+  {
     id: "2026-08-30-ai-buildout",
     date: "2026-08-30",
     title: "Will the AI Buildout Pay Off?",
